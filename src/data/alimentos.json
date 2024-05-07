@@ -1,0 +1,20 @@
+{
+    "OrigenAnimal": {
+        "Lacteos": {},
+        "CarnesDerivados": {},
+        "Huevos": {}
+    },
+    "Frutas_Verduras":{
+        "Frutas": ["Manzana", "Plátano", "Naranja"],
+        "Verduras": ["Zanahoria", "Espinaca", "Tomate"]
+    },
+    "Granos_Cereales": {
+
+    },
+    "Legumbres_FrutosCecos":{
+
+    },
+    "Suplementos":{
+
+    }
+}
