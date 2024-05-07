@@ -1,0 +1,6 @@
+{
+    "Frutas_Verduras":{
+        "Frutas": ["Manzana", "Plátano", "Naranja"],
+        "Verduras": ["Zanahoria", "Espinaca", "Tomate"]
+    }
+}
