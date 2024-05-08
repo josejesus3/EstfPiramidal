@@ -3,18 +3,76 @@ import fs from "fs";
 
 const app = express();
 
-const port=3000;
+const PORT= process.env.PORT || 3000;
 
 app.use(express.json());
+/*
 
-const readData = () => {
+        Lectura de datos
+
+*/
+
+//OrigenAnimal
+const readDataOrigenAnimal = () => {
     try {
-    const data = fs.readFileSync("./src/data/alimentos.json");
+    const data = fs.readFileSync("./src/data/origenAnimal.json");
     return JSON.parse(data);
     } catch (e) {
         console.log(e)
     }
 };
+
+//Frutas y Verduras
+
+const readDataFrutasVerduras = () => {
+    try {
+    const data = fs.readFileSync("./src/data/frutasVerduras.json");
+    return JSON.parse(data);
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+//Granos y Cereales
+
+const readDataGranosCereales = () => {
+    try {
+    const data = fs.readFileSync("./src/data/granosCereales.json");
+    return JSON.parse(data);
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+//Legumbres y Frutos Secos
+
+const readDataLegumbresFrutosSecos = () => {
+    try {
+    const data = fs.readFileSync("./src/data/legumbresFrutosSecos.json");
+    return JSON.parse(data);
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+//Suplementos
+
+const readDataSuplementos = () => {
+    try {
+    const data = fs.readFileSync("./src/data/suplementos.json");
+    return JSON.parse(data);
+    } catch (e) {
+        console.log(e)
+    }
+};
+
+
+/*
+
+        Escritura
+
+*/
+
 
 const writeData = (data) => {
     try {
@@ -27,6 +85,12 @@ const writeData = (data) => {
 };
 
 
+/*
+
+        Rutas GET
+
+*/
+
 app.get('/', (req, res) => {
 res.send("hi")
 });
@@ -38,6 +102,43 @@ app.get('/alimentos', (req, res) => {
 
 });
 
-app.listen(port,() => {
+app.get('/origenAnimal', (req, res) => {
+    const data = readDataOrigenAnimal();
+    res.json(data)
+
+});
+
+app.get('/frutasVerduras', (req, res) => {
+    const data = readDataFrutasVerduras();
+    res.json(data)
+
+});
+
+app.get('/granosCereales', (req, res) => {
+    const data = readDataGranosCereales();
+    res.json(data)
+
+});
+
+app.get('/legumbresFrutosSecos', (req, res) => {
+    const data = readDataLegumbresFrutosSecos();
+    res.json(data)
+
+});
+
+app.get('/suplementos', (req, res) => {
+    const data = readDataSuplementos();
+    res.json(data)
+
+});
+
+
+
+
+
+
+
+
+app.listen(PORT,() => {
     console.log('listening on port 3000')
 });
