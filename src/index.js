@@ -108,6 +108,13 @@ app.get('/origenAnimal', (req, res) => {
 
 });
 
+app.get('/origenAnimal/:id', (req, res) => {
+    const data = readDataOrigenAnimal();
+    const id = parseInt(req.params.id);
+    const alimento = data.origenAnimal.find((alimento) => alimento.id === id);
+    res.json(alimento)
+});
+
 app.get('/frutasVerduras', (req, res) => {
     const data = readDataFrutasVerduras();
     res.json(data)
