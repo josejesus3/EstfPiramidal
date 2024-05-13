@@ -1,77 +1,31 @@
 import express from 'express';
 import fs from "fs";
+import {dirname, join} from 'path';
+import {fileURLToPath} from 'url';
+
 
 const app = express();
 
 const PORT= process.env.PORT || 3000;
 
 app.use(express.json());
-/*
 
-        Lectura de datos
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.set('routers', join(__dirname, 'routers'))
+app.use(express.static(join(__dirname, 'routers')));
+//  Enrutadores
 
-*/
+import routeFrutasVerduras  from './routers/routerFrutasVerduras.js';
+import routeGranosCereales  from './routers/routerGranosCereales.js';
+import routeLegumbresFrutosCecos from './routers/routerLegumbresFrutosSecos.js';
+import routeOrigenAnimal from './routers/routerOrigenAnimal.js';
+import routeSuplementos from './routers/routerSuplementos.js';
 
-//OrigenAnimal
-const readDataOrigenAnimal = () => {
-    try {
-    const data = fs.readFileSync("./src/data/origenAnimal.json");
-    return JSON.parse(data);
-    } catch (e) {
-        console.log(e)
-    }
-};
-
-//Frutas y Verduras
-
-const readDataFrutasVerduras = () => {
-    try {
-    const data = fs.readFileSync("./src/data/frutasVerduras.json");
-    return JSON.parse(data);
-    } catch (e) {
-        console.log(e)
-    }
-};
-
-//Granos y Cereales
-
-const readDataGranosCereales = () => {
-    try {
-    const data = fs.readFileSync("./src/data/granosCereales.json");
-    return JSON.parse(data);
-    } catch (e) {
-        console.log(e)
-    }
-};
-
-//Legumbres y Frutos Secos
-
-const readDataLegumbresFrutosSecos = () => {
-    try {
-    const data = fs.readFileSync("./src/data/legumbresFrutosSecos.json");
-    return JSON.parse(data);
-    } catch (e) {
-        console.log(e)
-    }
-};
-
-//Suplementos
-
-const readDataSuplementos = () => {
-    try {
-    const data = fs.readFileSync("./src/data/suplementos.json");
-    return JSON.parse(data);
-    } catch (e) {
-        console.log(e)
-    }
-};
-
-
-/*
-
-        Escritura
-
-*/
+app.use('/FrutasVerduras', routeFrutasVerduras);
+app.use('/GranosCereales', routeGranosCereales);
+app.use('/LegumbresFrutosSecos', routeLegumbresFrutosCecos);
+app.use('/OrigenAnimal', routeOrigenAnimal);
+app.use('/Suplementos', routeSuplementos);
 
 
 const writeData = (data) => {
@@ -85,16 +39,17 @@ const writeData = (data) => {
 };
 
 
-/*
-
-        Rutas GET
-
-*/
-
 app.get('/', (req, res) => {
 res.send("hi")
 });
 
+
+
+
+app.listen(PORT,() => {
+    console.log('listening on port 3000')
+});
+/*
 
 app.get('/alimentos', (req, res) => {
     const data = readData();
@@ -102,11 +57,6 @@ app.get('/alimentos', (req, res) => {
 
 });
 
-app.get('/origenAnimal', (req, res) => {
-    const data = readDataOrigenAnimal();
-    res.json(data)
-
-});
 
 app.get('/origenAnimal/:id', (req, res) => {
     const data = readDataOrigenAnimal();
@@ -115,37 +65,5 @@ app.get('/origenAnimal/:id', (req, res) => {
     res.json(alimento)
 });
 
-app.get('/frutasVerduras', (req, res) => {
-    const data = readDataFrutasVerduras();
-    res.json(data)
 
-});
-
-app.get('/granosCereales', (req, res) => {
-    const data = readDataGranosCereales();
-    res.json(data)
-
-});
-
-app.get('/legumbresFrutosSecos', (req, res) => {
-    const data = readDataLegumbresFrutosSecos();
-    res.json(data)
-
-});
-
-app.get('/suplementos', (req, res) => {
-    const data = readDataSuplementos();
-    res.json(data)
-
-});
-
-
-
-
-
-
-
-
-app.listen(PORT,() => {
-    console.log('listening on port 3000')
-});
+*/
