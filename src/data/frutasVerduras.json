@@ -1,6 +1,27 @@
 {
     "Frutas_Verduras":{
-        "Frutas": ["Manzana", "Plátano", "Naranja"],
-        "Verduras": ["Zanahoria", "Espinaca", "Tomate"]
+        "resultado": [
+            {
+                "name": "Manzana",
+                "proteina": 8,
+                "calorias": 300
+            },
+            {
+                "name": "Plátano",
+                "proteina": 4,
+                "calorias": 150
+            },
+            {
+                "name": "Naranja",
+                "proteina": 2,
+                "calorias": 70
+            },
+            {
+                "name": "Fresa",
+                "proteina": 1,
+                "calorias": 30
+            }
+        ]
+       
     }
 }
