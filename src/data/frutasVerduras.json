@@ -20,6 +20,26 @@
                 "name": "Fresa",
                 "proteina": 1,
                 "calorias": 30
+            },
+            {
+                "name": "Zanahoria",
+                "proteina": 1,
+                "calorias": 50
+            },
+            {
+                "name": "Espinaca",
+                "proteina": 2,
+                "calorias": 20
+            },
+            {
+                "name": "Tomate",
+                "proteina": 1,
+                "calorias": 25
+            },
+            {
+                "name": "Brócoli",
+                "proteina": 3,
+                "calorias": 55
             }
         ]
        
